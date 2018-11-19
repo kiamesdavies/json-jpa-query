@@ -15,7 +15,9 @@
  */
 package com.github.markserrano.jsonquery.jpa.mapper;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.github.markserrano.jsonquery.jpa.filter.JsonFilter;
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;
@@ -36,6 +38,8 @@ public class JsonObjectMapper {
             ObjectMapper mapper = new ObjectMapper();
             DATEFORMAT.setTimeZone(TimeZone.getTimeZone("UTC"));
             mapper.setDateFormat(DATEFORMAT);
+            mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+            mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
             try {
                 return mapper.readValue(jsonString, JsonFilter.class);
             } catch (Exception e) {
