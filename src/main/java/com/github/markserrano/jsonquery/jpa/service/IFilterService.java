@@ -23,11 +23,14 @@ import mock.springframework.data.domain.Pageable;
 
 import com.github.markserrano.jsonquery.jpa.builder.JsonBooleanBuilder;
 import com.mysema.query.BooleanBuilder;
+import com.mysema.query.jpa.JPQLQuery;
+import com.mysema.query.sql.SQLBindings;
 import com.mysema.query.types.OrderSpecifier;
 
 /**
  *
  * @author Mark Anthony L. Serrano
+ * @param <T>
  */
 public interface IFilterService<T extends Serializable> {
 
@@ -38,6 +41,8 @@ public interface IFilterService<T extends Serializable> {
     List<T> readLeftJoin(BooleanBuilder builder, Pageable page, Class<T> clazz, OrderSpecifier order, BooleanBuilder joinChildBuilder, String joinChildField, Class<?> joinChildClass);
 
     List<T> read(BooleanBuilder builder, Pageable page, Class<T> clazz, OrderSpecifier order);
+    
+    JPQLQuery getRawJPQLQuery(BooleanBuilder builder, Pageable page, Class<T> clazz, OrderSpecifier order) ;
 
     Long count(BooleanBuilder builder, Class<T> clazz);
 

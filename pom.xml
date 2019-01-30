@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
    
     <groupId>com.github.markserrano_kiamesdavies</groupId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <artifactId>json-jpa-query</artifactId>
     <packaging>jar</packaging>
     <dependencies>
@@ -21,6 +21,25 @@
             <version>3.7.2</version>
             <type>jar</type>
         </dependency>
+        <dependency>
+            <groupId>com.mysema.querydsl</groupId>
+            <artifactId>querydsl-sql</artifactId>
+            <version>3.7.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.mysema.querydsl</groupId>
+            <artifactId>querydsl-sql-codegen</artifactId>
+            <version>3.7.2</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.6.1</version>
+        </dependency>
+
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>

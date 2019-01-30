@@ -114,14 +114,31 @@ public class FilterService<T extends Serializable> implements IFilterService<T> 
 
         EntityPath<T> path = entityPath;
 
+        
         JPQLQuery result = new JPAQuery(provider.get().em()).from(path).where(builder).orderBy(order);
 
         if (page != null) {
             result.offset(page.getOffset());
             result.limit(page.getPageSize());
         }
-
         return result.list(entityPath);
+    }
+
+    @Override
+    public JPQLQuery getRawJPQLQuery(BooleanBuilder builder, Pageable page, Class<T> clazz, OrderSpecifier order) {
+        String variable = clazz.getSimpleName().substring(0, 1).toLowerCase() + clazz.getSimpleName().substring(1);
+        PathBuilder<T> entityPath = new PathBuilder<T>(clazz, variable);
+
+        EntityPath<T> path = entityPath;
+
+        JPQLQuery result = new JPAQuery(provider.get().em()).from(path).where(builder).orderBy(order);
+//
+//        if (page != null) {
+//            result.offset(page.getOffset());
+//            result.limit(page.getPageSize());
+//        }
+        
+        return result;
     }
 
     @Override
