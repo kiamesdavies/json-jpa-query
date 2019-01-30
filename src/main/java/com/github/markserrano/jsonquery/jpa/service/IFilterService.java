@@ -24,7 +24,6 @@ import mock.springframework.data.domain.Pageable;
 import com.github.markserrano.jsonquery.jpa.builder.JsonBooleanBuilder;
 import com.mysema.query.BooleanBuilder;
 import com.mysema.query.jpa.JPQLQuery;
-import com.mysema.query.sql.SQLBindings;
 import com.mysema.query.types.OrderSpecifier;
 
 /**
