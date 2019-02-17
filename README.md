@@ -41,27 +41,27 @@ Note: The framework is designed only for reading data. It doesn't create, update
 	
 
 
-	public JqgridResponse searchAppUsers(String token, Boolean search, String filters, Integer page, Integer rows, String sidx, String sord)  {        
-        Order order = new Order(JPAAppUser.class);
-        // Prepare arguments before reading from service
-        Pageable pageable = new PageRequest(page - 1, rows);
-        
-        OrderSpecifier<?> orderSpecifier = order.by(sidx, OrderEnum.getEnum(sord));
-        BooleanBuilder booleanBuilder = service.getJsonBooleanBuilder(JPAAppUser.class).build(new JsonFilter(filters));
+		public JqgridResponse searchAppUsers(String token, Boolean search, String filters, Integer page, Integer rows, String sidx, String sord)  {        
+            Order order = new Order(JPAAppUser.class);
+            // Prepare arguments before reading from service
+            Pageable pageable = new PageRequest(page - 1, rows);
+            
+            OrderSpecifier<?> orderSpecifier = order.by(sidx, OrderEnum.getEnum(sord));
+            BooleanBuilder booleanBuilder = service.getJsonBooleanBuilder(JPAAppUser.class).build(new JsonFilter(filters));
 
-        // Add extra filters manually if necessary
-        // Read from service
-        Page<JPAAppUser> results = service.readAndCount(entityManager,booleanBuilder, pageable, JPAAppUser.class, orderSpecifier);
+            // Add extra filters manually if necessary
+            // Read from service
+            Page<JPAAppUser> results = service.readAndCount(entityManager,booleanBuilder, pageable, JPAAppUser.class, orderSpecifier);
 
-        // Map response
-        JqgridResponse<AppUser> response = new JqgridResponse<AppUser>();
-        response.setRows(results.getContent().stream().map(JPAAppUser::AppUserFromJPAAppUser).collect(Collectors.toList()));
-        response.setRecords(Long.valueOf(results.getTotalElements()).toString());
-        response.setTotal(Integer.valueOf(results.getTotalPages()).toString());
-        response.setPage(Integer.valueOf(results.getNumber() + 1).toString());
+            // Map response
+            JqgridResponse<AppUser> response = new JqgridResponse<AppUser>();
+            response.setRows(results.getContent().stream().map(JPAAppUser::AppUserFromJPAAppUser).collect(Collectors.toList()));
+            response.setRecords(Long.valueOf(results.getTotalElements()).toString());
+            response.setTotal(Integer.valueOf(results.getTotalPages()).toString());
+            response.setPage(Integer.valueOf(results.getNumber() + 1).toString());
 
-        return response;
-    }
+            return response;
+    	}
 
 #TODO
 1. Create samples
