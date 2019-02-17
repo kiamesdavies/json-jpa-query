@@ -40,7 +40,7 @@ import play.db.jpa.JPAApi;
 
 /**
  *
- * @author Mark Anthony L. Serrano
+ * @author Mark Anthony L. Serrano, Akinniranye James Ayodele
  */
 @Singleton
 public class FilterService<T extends Serializable> implements IFilterService<T> {

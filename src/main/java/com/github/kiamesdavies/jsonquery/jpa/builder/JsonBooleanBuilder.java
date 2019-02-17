@@ -40,7 +40,7 @@ import java.util.List;
  * @param clazz the domain class
  * @param variable the literal name of the domain class
  *
- * @author Mark Anthony L. Serrano
+ * @author Mark Anthony L. Serrano, Akinniranye James Ayodele
  */
 public class JsonBooleanBuilder {
 

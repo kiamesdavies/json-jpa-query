@@ -34,7 +34,7 @@ import com.mysema.query.types.path.StringPath;
  * @param variable the literal name of the class
  * @param field the literal field name
  *
- * @author Mark Anthony L. Serrano
+ * @author Mark Anthony L. Serrano, Akinniranye James Ayodele
  */
 public class PathUtil {
 

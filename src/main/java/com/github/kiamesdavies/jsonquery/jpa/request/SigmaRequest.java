@@ -20,7 +20,7 @@ import java.util.List;
 
 /**
  * 
- * @author Mark Anthony L. Serrano
+ * @author Mark Anthony L. Serrano, Akinniranye James Ayodele
  */
 public class SigmaRequest {
 

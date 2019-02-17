@@ -25,7 +25,7 @@ import com.github.kiamesdavies.jsonquery.jpa.util.QueryUtil;
 /**
  * Generic implementation that requires a date range
  * 
- * @author Mark Anthony L. Serrano
+ * @author Mark Anthony L. Serrano, Akinniranye James Ayodele
  */
 public abstract class DateRangeFilterReplacement implements FilterReplacement {
 

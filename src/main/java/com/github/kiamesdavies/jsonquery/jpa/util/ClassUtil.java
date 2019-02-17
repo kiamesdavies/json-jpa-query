@@ -23,7 +23,7 @@ import org.joda.time.DateTime;
 /**
  * Retrieves the class type
  *
- * @author Mark Anthony L. Serrano
+ * @author Mark Anthony L. Serrano, Akinniranye James Ayodele
  */
 public class ClassUtil {
 

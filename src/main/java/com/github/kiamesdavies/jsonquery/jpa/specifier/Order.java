@@ -37,7 +37,7 @@ import com.mysema.query.types.path.StringPath;
  * @param field the literal name of the field
  * @param orderEnum an {@link OrderEnum} value
  *
- * @author Mark Anthony L. Serrano
+ * @author Mark Anthony L. Serrano, Akinniranye James Ayodele
  */
 public class Order {
 

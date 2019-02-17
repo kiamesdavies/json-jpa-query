@@ -25,7 +25,7 @@ import com.github.kiamesdavies.jsonquery.jpa.mapper.JsonObjectMapper;
 
 /**
  * 
- * @author Mark Anthony L. Serrano
+ * @author Mark Anthony L. Serrano, Akinniranye James Ayodele
  */
 public class HqlFilterUtil {
 

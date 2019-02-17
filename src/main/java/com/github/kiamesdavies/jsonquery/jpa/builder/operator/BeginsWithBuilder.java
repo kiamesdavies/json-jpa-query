@@ -36,7 +36,7 @@ import com.mysema.query.types.path.StringPath;
  * @param builder an existing {@link BooleanBuilder}
  * @param rule a {@link JsonFilter.Rule} containing a field query
  *
- * @author Mark Anthony L. Serrano
+ * @author Mark Anthony L. Serrano, Akinniranye James Ayodele
  */
 public class BeginsWithBuilder {
 

@@ -30,7 +30,7 @@ import com.github.kiamesdavies.jsonquery.jpa.mapper.JsonObjectMapper;
 /**
  * Retrieves the correct {@link DateTime} for the current timezone
  *
- * @author Mark Anthony L. Serrano
+ * @author Mark Anthony L. Serrano, Akinniranye James Ayodele
  */
 public class DateTimeUtil {
 

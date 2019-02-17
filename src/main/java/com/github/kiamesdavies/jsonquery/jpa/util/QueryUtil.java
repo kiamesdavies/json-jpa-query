@@ -35,7 +35,7 @@ import com.github.kiamesdavies.jsonquery.jpa.mapper.JsonObjectMapper;
  * 2. Appending of an OR query
  * </pre>
  * 
- * @author Mark Anthony L. Serrano
+ * @author Mark Anthony L. Serrano, Akinniranye James Ayodele
  */
 public class QueryUtil {
 

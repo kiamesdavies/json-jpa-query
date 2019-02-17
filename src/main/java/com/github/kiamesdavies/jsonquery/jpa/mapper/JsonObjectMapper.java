@@ -26,7 +26,7 @@ import java.util.TimeZone;
  * Maps a JSON query {@link String} to a {@link JsonFilter} instance
  *
  *
- * @author Mark Anthony L. Serrano
+ * @author Mark Anthony L. Serrano, Akinniranye James Ayodele
  */
 public class JsonObjectMapper {
 

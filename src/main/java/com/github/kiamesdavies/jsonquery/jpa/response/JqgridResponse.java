@@ -29,7 +29,7 @@ import mock.springframework.data.domain.Page;
  * <a href="http://www.trirand.com/jqgridwiki/doku.php?id=wiki:retrieving_data#json_data">JSON
  * Data</a>
  *
- * @author Mark Anthony L. Serrano
+ * @author Mark Anthony L. Serrano, Akinniranye James Ayodele
  */
 public class JqgridResponse<T> implements Serializable {
 

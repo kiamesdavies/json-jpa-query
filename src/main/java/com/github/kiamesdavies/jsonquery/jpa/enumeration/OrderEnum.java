@@ -23,7 +23,7 @@ import java.util.Map;
 /**
  * Enumeration for ordering
  * 
- * @author Mark Anthony L. Serrano
+ * @author Mark Anthony L. Serrano, Akinniranye James Ayodele
  */
 public enum OrderEnum
 {

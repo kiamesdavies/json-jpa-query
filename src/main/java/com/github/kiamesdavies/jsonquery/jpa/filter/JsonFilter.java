@@ -25,7 +25,7 @@ import java.util.ArrayList;
  * {"groupOp":"AND","rules":[{"field":"firstName","op":"eq","data":"John"}]}
  * </pre>
  * 
- * @author Mark Anthony L. Serrano
+ * @author Mark Anthony L. Serrano, Akinniranye James Ayodele
  */
 public class JsonFilter {
 	

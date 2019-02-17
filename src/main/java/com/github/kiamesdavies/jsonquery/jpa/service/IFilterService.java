@@ -28,7 +28,7 @@ import com.mysema.query.types.OrderSpecifier;
 
 /**
  *
- * @author Mark Anthony L. Serrano
+ * @author Mark Anthony L. Serrano, Akinniranye James Ayodele
  * @param <T>
  */
 public interface IFilterService<T extends Serializable> {

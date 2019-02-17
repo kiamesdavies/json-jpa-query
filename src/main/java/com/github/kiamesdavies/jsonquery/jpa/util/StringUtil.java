@@ -19,7 +19,7 @@ package com.github.kiamesdavies.jsonquery.jpa.util;
 /**
  * Utility for retrieving a specific path in a fully-qualified {@link String} class name
  * 
- * @author Mark Anthony L. Serrano
+ * @author Mark Anthony L. Serrano, Akinniranye James Ayodele
  */
 public class StringUtil {
 	

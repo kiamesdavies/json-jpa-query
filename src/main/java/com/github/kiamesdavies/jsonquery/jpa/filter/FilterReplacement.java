@@ -18,7 +18,7 @@ package com.github.kiamesdavies.jsonquery.jpa.filter;
 
 /**
  * 
- * @author Mark Anthony L. Serrano
+ * @author Mark Anthony L. Serrano, Akinniranye James Ayodele
  */
 public interface FilterReplacement {
 
