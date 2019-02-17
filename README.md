@@ -35,7 +35,7 @@ Note: The framework is designed only for reading data. It doesn't create, update
 
 3. Inject the filter service 
 	@Inject
-    IFilterService filterService;
+    IFilterService service;
 
 4. Search the entity class
 	
