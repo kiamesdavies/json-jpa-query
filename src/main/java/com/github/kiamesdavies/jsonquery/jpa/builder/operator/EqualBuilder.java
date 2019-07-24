@@ -29,8 +29,12 @@ import com.github.kiamesdavies.jsonquery.jpa.util.PathUtil;
 import com.mysema.query.BooleanBuilder;
 import com.mysema.query.types.path.BooleanPath;
 import com.mysema.query.types.path.DatePath;
+import com.mysema.query.types.path.EnumPath;
 import com.mysema.query.types.path.NumberPath;
 import com.mysema.query.types.path.StringPath;
+import java.lang.reflect.Method;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.apache.commons.lang3.time.DateUtils;
 
 /**
@@ -50,13 +54,23 @@ public class EqualBuilder {
     public static BooleanBuilder get(Class<?> clazz, String variable, BooleanBuilder builder, JsonFilter.Rule rule) {
 
         if (OperatorEnum.getEnum(rule.getOp()) == OperatorEnum.EQUAL) {
-            if (ClassUtil.getType(clazz, rule.getField()) == String.class) {
+            if (ClassUtil.getType(clazz, rule.getField()) == String.class ) {
                 StringPath path = (StringPath) PathUtil.getPath(clazz, variable, rule.getField());
 
                 if (rule.getData() == null) {
                     return JunctionBuilder.getBuilder(path.isNull(), builder, rule);
                 }
                 return JunctionBuilder.getBuilder(path.equalsIgnoreCase(rule.getData()), builder, rule);
+            }
+            
+             if (Enum.class.isAssignableFrom(ClassUtil.getType(clazz, rule.getField())) ) {
+                EnumPath path = (EnumPath) PathUtil.getPath(clazz, variable, rule.getField());
+
+                if (rule.getData() == null) {
+                    return JunctionBuilder.getBuilder(path.isNull(), builder, rule);
+                }
+                Class<? extends Enum> asSubclass = ClassUtil.getType(clazz,  rule.getField()).asSubclass(Enum.class);
+                return JunctionBuilder.getBuilder(path.eq(Enum.valueOf(asSubclass, rule.getData().toString())), builder, rule);
             }
 
             if (ClassUtil.getType(clazz, rule.getField()) == Boolean.class || ClassUtil.getType(clazz, rule.getField()).equals(boolean.class)) {

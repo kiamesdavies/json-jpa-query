@@ -23,6 +23,7 @@ import org.joda.time.DateTime;
 import com.mysema.query.types.Path;
 import com.mysema.query.types.path.BooleanPath;
 import com.mysema.query.types.path.DatePath;
+import com.mysema.query.types.path.EnumPath;
 import com.mysema.query.types.path.NumberPath;
 import com.mysema.query.types.path.PathBuilder;
 import com.mysema.query.types.path.StringPath;
@@ -49,13 +50,13 @@ public class PathUtil {
         } else if (ClassUtil.getType(clazz, field) == Boolean.class || ClassUtil.getType(clazz, field).equals(boolean.class)) {
             return entityPath.get(new BooleanPath(field));
 
-        } else if (ClassUtil.getType(clazz, field) == Integer.class) {
+        } else if (ClassUtil.getType(clazz, field) == Integer.class || ClassUtil.getType(clazz, field).equals(int.class)) {
             return entityPath.get(new NumberPath<Integer>(Integer.class, field));
 
-        } else if (ClassUtil.getType(clazz, field) == Long.class) {
+        } else if (ClassUtil.getType(clazz, field) == Long.class || ClassUtil.getType(clazz, field).equals(long.class)) {
             return entityPath.get(new NumberPath<Long>(Long.class, field));
 
-        } else if (ClassUtil.getType(clazz, field) == Double.class) {
+        } else if (ClassUtil.getType(clazz, field) == Double.class || ClassUtil.getType(clazz, field).equals(double.class)) {
             return entityPath.get(new NumberPath<Double>(Double.class, field));
 
         } else if (ClassUtil.getType(clazz, field) == DateTime.class) {
@@ -74,7 +75,10 @@ public class PathUtil {
             // And the type is Long and Serializable
             return entityPath.get(new NumberPath<Long>(Long.class, field));
         }
+          else if ( Enum.class.isAssignableFrom (ClassUtil.getType(clazz, field))) {
+            return entityPath.getEnum(field, ClassUtil.getType(clazz, field).asSubclass(Enum.class));
 
-        throw new RuntimeException("No matching path for " + field +" and path "+clazz);
+        } 
+        throw new RuntimeException("No matching path for " + field + " and path " + clazz);
     }
 }

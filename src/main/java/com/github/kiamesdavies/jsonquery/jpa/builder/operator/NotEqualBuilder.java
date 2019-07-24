@@ -29,6 +29,7 @@ import com.github.kiamesdavies.jsonquery.jpa.util.PathUtil;
 import com.mysema.query.BooleanBuilder;
 import com.mysema.query.types.path.BooleanPath;
 import com.mysema.query.types.path.DatePath;
+import com.mysema.query.types.path.EnumPath;
 import com.mysema.query.types.path.NumberPath;
 import com.mysema.query.types.path.StringPath;
 import org.apache.commons.lang3.time.DateUtils;
@@ -58,6 +59,15 @@ public class NotEqualBuilder {
                 return JunctionBuilder.getBuilder(path.ne(rule.getData()), builder, rule);
             }
 
+            if (Enum.class.isAssignableFrom(ClassUtil.getType(clazz, rule.getField()))) {
+                EnumPath path = (EnumPath) PathUtil.getPath(clazz, variable, rule.getField());
+
+                if (rule.getData() == null) {
+                    return JunctionBuilder.getBuilder(path.isNotNull(), builder, rule);
+                }
+                Class<? extends Enum> asSubclass = ClassUtil.getType(clazz, rule.getField()).asSubclass(Enum.class);
+                return JunctionBuilder.getBuilder(path.ne(Enum.valueOf(asSubclass, rule.getData().toString())), builder, rule);
+            }
             if (ClassUtil.getType(clazz, rule.getField()) == Boolean.class) {
                 BooleanPath path = (BooleanPath) PathUtil.getPath(clazz, variable, rule.getField());
                 return JunctionBuilder.getBuilder(path.ne(Boolean.valueOf(rule.getData())), builder, rule);
