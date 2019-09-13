@@ -19,14 +19,9 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import com.mysema.query.types.path.*;
 import org.joda.time.DateTime;
 import com.mysema.query.types.Path;
-import com.mysema.query.types.path.BooleanPath;
-import com.mysema.query.types.path.DatePath;
-import com.mysema.query.types.path.EnumPath;
-import com.mysema.query.types.path.NumberPath;
-import com.mysema.query.types.path.PathBuilder;
-import com.mysema.query.types.path.StringPath;
 
 /**
  * Retrieves the corresponding {@link Path} for the provided field
@@ -74,11 +69,14 @@ public class PathUtil {
             // For references on another objects, we assume that we reference by id
             // And the type is Long and Serializable
             return entityPath.get(new NumberPath<Long>(Long.class, field));
-        }
-          else if ( Enum.class.isAssignableFrom (ClassUtil.getType(clazz, field))) {
+        }else if ( Enum.class.isAssignableFrom (ClassUtil.getType(clazz, field))) {
             return entityPath.getEnum(field, ClassUtil.getType(clazz, field).asSubclass(Enum.class));
 
-        } 
+        }
+        else if (ClassUtil.getType(clazz, field) == String[].class) {
+            return entityPath.get(new ArrayPath(String[].class, field));
+
+        }
         throw new RuntimeException("No matching path for " + field + " and path " + clazz);
     }
 }
