@@ -17,7 +17,10 @@ package com.github.kiamesdavies.jsonquery.jpa.util;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.stream.Stream;
+
 import org.joda.time.DateTime;
 
 /**
@@ -37,12 +40,11 @@ public class ClassUtil {
 
     public static Class<?> getType(Class<?> clazz, String field) {
         for (Field f : clazz.getDeclaredFields()) {
-            for (Field g : f.getType().getDeclaredFields()) {
-                for (Field h : g.getType().getDeclaredFields()) {
+            for (Field g : Stream.of(f.getType().getDeclaredFields(), f.getType().getFields()).flatMap(Stream::of).toArray(Field[]::new)) {
+                for (Field h : Stream.of(g.getType().getDeclaredFields(), g.getType().getFields()).flatMap(Stream::of).toArray(Field[]::new)) {
 
                     Class<?> type = getMatchingType(h, field);
                     //when u have something like complaintTypeId.complaintTypeId without the other check apart from null, it will pick the type of the first complaintTypeId object
-                    //added by james 
                     if (type != null && (type.isPrimitive() || type.getPackage().getName().equalsIgnoreCase("java.lang") || type == Date.class || type == DateTime.class  )) {
                         return type;
                     }
@@ -65,7 +67,7 @@ public class ClassUtil {
             return type;
         }
 
-        throw new RuntimeException("No matching field for " + field + " and class " + clazz);
+        throw new RuntimeException("No matching field for " + field + " and  " + clazz);
     }
 
     // Check by inheritance if no match
