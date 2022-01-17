@@ -35,7 +35,8 @@ public enum OperatorEnum
 	LESSER_EQUAL(5, "le"),
 	ENDS_WITH(6, "ew"),
 	BEGINS_WITH(7, "bw"),
-	CONTAINS(8, "cn");
+	CONTAINS(8, "cn"),
+	IN(9, "in");
 	
 	private Integer value;
 	private String description;

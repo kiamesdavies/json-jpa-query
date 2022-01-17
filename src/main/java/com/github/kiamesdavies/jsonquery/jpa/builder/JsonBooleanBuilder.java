@@ -15,15 +15,7 @@
  */
 package com.github.kiamesdavies.jsonquery.jpa.builder;
 
-import com.github.kiamesdavies.jsonquery.jpa.builder.operator.BeginsWithBuilder;
-import com.github.kiamesdavies.jsonquery.jpa.builder.operator.ContainsBuilder;
-import com.github.kiamesdavies.jsonquery.jpa.builder.operator.EndsWithBuilder;
-import com.github.kiamesdavies.jsonquery.jpa.builder.operator.EqualBuilder;
-import com.github.kiamesdavies.jsonquery.jpa.builder.operator.GreaterEqualBuilder;
-import com.github.kiamesdavies.jsonquery.jpa.builder.operator.GreaterThanBuilder;
-import com.github.kiamesdavies.jsonquery.jpa.builder.operator.LessThanBuilder;
-import com.github.kiamesdavies.jsonquery.jpa.builder.operator.LesserEqualBuilder;
-import com.github.kiamesdavies.jsonquery.jpa.builder.operator.NotEqualBuilder;
+import com.github.kiamesdavies.jsonquery.jpa.builder.operator.*;
 import com.github.kiamesdavies.jsonquery.jpa.filter.JsonFilter;
 import com.github.kiamesdavies.jsonquery.jpa.mapper.JsonObjectMapper;
 import com.github.kiamesdavies.jsonquery.jpa.util.ClassUtil;
@@ -170,6 +162,11 @@ public class JsonBooleanBuilder {
         }
 
         tempBuilder = ContainsBuilder.get(clazz, variable, builder, rule);
+        if (tempBuilder != null) {
+            return tempBuilder;
+        }
+
+        tempBuilder = InBuilder.get(clazz, variable, builder, rule);
         if (tempBuilder != null) {
             return tempBuilder;
         }
