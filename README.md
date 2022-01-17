@@ -17,7 +17,7 @@ Here's a sample JSON query:
     	"{"field":"money","op":"lt","data":"2000.75"}," +
     	"{"field":"birthDate","op":"eq","data":"1959-09-30T00:00:00.000Z"}," +
     	"{"field":"parent.id","op":"eq","data":"2"}," +
-    	"{"field":"creationDate","op":"eq","data":"01-31-1980 +5"}" +
+    	"{"field":"creationDate","op":"eq","data":"01-31-1980 +5"}," +
     	"{"field":"hobbies","op":"in","data":"dancing,reading,cycling,star gazing"}" +
     	"]}";
     	
